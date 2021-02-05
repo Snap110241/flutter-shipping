@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_workshop/delivery.dart';
 import 'package:flutter_workshop/favorite.dart';
 import 'package:flutter_workshop/home.dart';
-import 'package:flutter_workshop/profile.dart';
+import 'package:flutter_workshop/delivery.dart';
+// import 'package:flutter_workshop/profile.dart';
 import '../user_list.screen.dart';
 
 class TabNavigationItem {
@@ -26,15 +28,20 @@ class TabNavigationItem {
       icon: Icon(Icons.people),
       label: 'User',
     ),
+    TabNavigationItem(
+      screen: Delivery(),
+      icon: Icon(Icons.people),
+      label: 'delivery',
+    ),
     // TabNavigationItem(
     //   screen: Favorite(),
     //   icon: Icon(Icons.favorite),
     //   label: 'Favorite',
     // ),
-    TabNavigationItem(
-      screen: Profile(),
-      icon: Icon(Icons.person),
-      label: 'Profile',
-    ),
+    // TabNavigationItem(
+    //   screen: Profile(),
+    //   icon: Icon(Icons.person),
+    //   label: 'Profile',
+    // ),
   ];
 }
