@@ -28,11 +28,7 @@ class TabNavigationItem {
       icon: Icon(Icons.people),
       label: 'User',
     ),
-    TabNavigationItem(
-      screen: Delivery(),
-      icon: Icon(Icons.people),
-      label: 'delivery',
-    ),
+
     // TabNavigationItem(
     //   screen: Favorite(),
     //   icon: Icon(Icons.favorite),

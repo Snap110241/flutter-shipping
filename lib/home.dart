@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'delivery.dart';
+
+
+
 class Home extends StatefulWidget {
 
   @override
@@ -32,9 +36,19 @@ class MyStatelessWidget extends StatelessWidget {
 
           const SizedBox(height: 30),
           RaisedButton(
-            onPressed: () {},
+
             child: const Text('คิวส่งสินค้า', style: TextStyle(fontSize: 20)),
+              onPressed: () => Navigator.push(
+                context,
+              MaterialPageRoute(builder: (context) => Delivery())
+          )
           ),
+          const SizedBox(height: 30),
+          RaisedButton(
+            onPressed: () {},
+            child: const Text('ค้างส่งสินค้า', style: TextStyle(fontSize: 20)),
+          ),
+
           const SizedBox(height: 30),
           RaisedButton(
             onPressed: () {},
@@ -52,7 +66,7 @@ class MyStatelessWidget extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(10.0),
               child:
-              const Text('จัดส่งสินค้า', style: TextStyle(fontSize: 20)),
+              const Text('จัดส่งสินค้าสำเร็จ', style: TextStyle(fontSize: 20)),
             ),
           ),
         ],

@@ -14,20 +14,33 @@ class _LoginState extends State<Login> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          Text('Login',
+            style: TextStyle(fontSize: 30),
+          ),
           Icon(
             Icons.home,
             size: 100,
           ),
-          Text(
-            'Proceed with your',
-            style: TextStyle(fontSize: 30),
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'username',
+            )
+
           ),
-          Text(
-            'Login',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Password',
+              )
+
           ),
+
+
           RaisedButton(
-            child: Text('Sign In'),
+            child: Text('Login'),
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => TabScreen())
