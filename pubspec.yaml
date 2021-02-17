@@ -21,9 +21,14 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  google_maps_flutter:
+  google_map_polyline:
   flutter:
     sdk: flutter
   http: ^0.12.2
+  flutter_secure_storage: ^3.3.5
+  flutter_map:
+
 
 
 

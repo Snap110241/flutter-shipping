@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'backlogShipping.dart';
 import 'delivery.dart';
+import 'succecs.dart';
 
 
 
@@ -45,26 +47,21 @@ class MyStatelessWidget extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           RaisedButton(
-            onPressed: () {},
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BacklogDelivery())
+            ),
             child: const Text('ค้างส่งสินค้า', style: TextStyle(fontSize: 20)),
           ),
 
           const SizedBox(height: 30),
           RaisedButton(
-            onPressed: () {},
-            textColor: Colors.white,
-            padding: const EdgeInsets.all(0.0),
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Success())
+            ),
+            textColor: Colors.black,
             child: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: <Color>[
-                    Color(0xFF0D47A1),
-                    Color(0xFF1976D2),
-                    Color(0xFF42A5F5),
-                  ],
-                ),
-              ),
-              padding: const EdgeInsets.all(10.0),
               child:
               const Text('จัดส่งสินค้าสำเร็จ', style: TextStyle(fontSize: 20)),
             ),

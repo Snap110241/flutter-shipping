@@ -4,7 +4,7 @@ import 'package:flutter_workshop/favorite.dart';
 import 'package:flutter_workshop/home.dart';
 import 'package:flutter_workshop/delivery.dart';
 // import 'package:flutter_workshop/profile.dart';
-import '../user_list.screen.dart';
+import '../profile.dart';
 
 class TabNavigationItem {
   final Widget screen;
@@ -24,7 +24,7 @@ class TabNavigationItem {
       label: 'Home',
     ),
     TabNavigationItem(
-      screen: UserListScreen(),
+      screen: Profile(),
       icon: Icon(Icons.people),
       label: 'User',
     ),

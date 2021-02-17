@@ -1,50 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_workshop/delivery_detail..dart';
-import 'package:flutter_workshop/models/delivery.model.dart';
-import 'package:flutter_workshop/services/delivery.service.dart';
 
-import 'models/order.model.ts.dart';
-import 'services/orders.service.dart';
+import 'models/delivery.model.dart';
+import 'services/delivery.service.dart';
 
-class Delivery extends StatefulWidget {
+class BacklogDelivery extends StatefulWidget {
   @override
-  _DeliveryState createState() => _DeliveryState();
+  _BacklogDeliveryState createState() => _BacklogDeliveryState();
 }
 
-class _DeliveryState extends State<Delivery> {
+class _BacklogDeliveryState extends State<BacklogDelivery> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('คิวส่งสินค้า'),
+          title: Text('คิวสค้าง่งสินค้า'),
         ),
         body: FutureBuilder(
           future: DeliveryService().getDeliverys(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              List<DeliveryModel> deliverys = snapshot.data;
-              //
+              List<DeliveryModel> delivery = snapshot.data;
+
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: List.generate(
-                  deliverys.length,
+                  delivery.length,
                   (int index) => SizedBox(
                     height: 50,
                     child: GestureDetector(
                       onTap: () {
-                        print(deliverys[index].delId);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                DeliveryDetail(deliverys[index].delId),
-                          ),
-                        );
+                        print(delivery[index].delId);
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) =>
+                        //         BacklogDeliveryDetail(deliverys[index].delId),
+                        //   ),
+                        // );
                       },
                       child: Card(
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text(deliverys[index].delCusName),
+                          child: Text(delivery[index].delCusName),
                         ),
                       ),
                     ),
