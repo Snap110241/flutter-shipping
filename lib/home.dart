@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'backlogShipping.dart';
 import 'delivery.dart';
 import 'succecs.dart';
 
@@ -44,27 +43,6 @@ class MyStatelessWidget extends StatelessWidget {
                 context,
               MaterialPageRoute(builder: (context) => Delivery())
           )
-          ),
-          const SizedBox(height: 30),
-          RaisedButton(
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => BacklogDelivery())
-            ),
-            child: const Text('ค้างส่งสินค้า', style: TextStyle(fontSize: 20)),
-          ),
-
-          const SizedBox(height: 30),
-          RaisedButton(
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Success())
-            ),
-            textColor: Colors.black,
-            child: Container(
-              child:
-              const Text('จัดส่งสินค้าสำเร็จ', style: TextStyle(fontSize: 20)),
-            ),
           ),
         ],
       ),

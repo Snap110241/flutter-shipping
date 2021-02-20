@@ -1,13 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_workshop/map.dart';
+import 'package:flutter_workshop/location.dart';
 import 'package:flutter_workshop/models/delivery.model.dart';
 import 'package:flutter_workshop/services/delivery.service.dart';
-import 'file:///C:/Users/nunan/Desktop/flutter-shipping/lib/map.dart';
 import 'package:flutter_workshop/services/orders.service.dart';
 import 'package:flutter_workshop/untilites/radio.model.dart';
-
 import 'models/delivery_detail.model.dart';
 import 'models/order.model.ts.dart';
 
@@ -194,7 +192,8 @@ class _DeliveryDetailState extends State<DeliveryDetail> {
                   this._buildCustomerAddress(this._deilivery.delCusAdderss),
                   this._buildDeliveryStatus(this._deilivery.delStatus),
                   this._buildHeaderTable(),
-                  this._buildDeliveryItem(this._deilivery.deliveryDetail)
+                  this._buildDeliveryItem(this._deilivery.deliveryDetail),
+                  this._buildButtomMap(),
                 ],
               );
             } else {
@@ -275,7 +274,7 @@ class _DeliveryDetailState extends State<DeliveryDetail> {
   }
 
   Widget _buildDeliveryStatus(int deliveryStatus) {
-    return  Row(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Status'),
@@ -285,7 +284,7 @@ class _DeliveryDetailState extends State<DeliveryDetail> {
             child: Column(
               children: List.generate(
                 this._deliveryStatus.length,
-                    (index) => this._buildRadioListTile(index),
+                (index) => this._buildRadioListTile(index),
               ),
             ),
           ),
@@ -310,16 +309,18 @@ class _DeliveryDetailState extends State<DeliveryDetail> {
         value: index + 1,
         groupValue: this._selectedDeliveryStatus,
         onChanged: (int value) {
-            print(value);
-            this._deilivery.delStatus = value;
-            // DeliveryModel updateDelivery = DeliveryModel();
-            // updateDelivery.delStatus = value;
-            DeliveryService().updateDelivery(this.widget.delId, this._deilivery).then((response) {
-              setState(() {
+          print(value);
+          this._deilivery.delStatus = value;
+          // DeliveryModel updateDelivery = DeliveryModel();
+          // updateDelivery.delStatus = value;
+          DeliveryService()
+              .updateDelivery(this.widget.delId, this._deilivery)
+              .then((response) {
+            setState(() {
               print('results ${response.body}');
               this._selectedDeliveryStatus = value;
-              });
             });
+          });
         },
       ),
     );
@@ -334,21 +335,21 @@ class _DeliveryDetailState extends State<DeliveryDetail> {
             Expanded(
               flex: 6, // 20%
               child: Container(
-                color: Colors.red,
+                color: Colors.white30,
                 child: Text('ชื่อสินค้า'),
               ),
             ),
             Expanded(
               flex: 2, // 60%
               child: Container(
-                color: Colors.green,
+                color: Colors.white38,
                 child: Text('จำนวน'),
               ),
             ),
             Expanded(
               flex: 2, // 20%
               child: Container(
-                color: Colors.blue,
+                color: Colors.white54,
                 child: Text('ราคา'),
               ),
             )
@@ -367,27 +368,41 @@ class _DeliveryDetailState extends State<DeliveryDetail> {
             Expanded(
               flex: 6, // 20%
               child: Container(
-                color: Colors.red,
+                color: Colors.white54,
                 child: Text(deliveries[index].deldeProName),
               ),
             ),
             Expanded(
               flex: 2, // 60%
               child: Container(
-                color: Colors.green,
-                child: Text('xxxxx'),
+                color: Colors.white54,
+                child: Text(deliveries[index].deldeProQty),
               ),
             ),
             Expanded(
               flex: 2, // 20%
               child: Container(
-                color: Colors.blue,
-                child: Text('xxxx'),
+                color: Colors.white54,
+                child: Text(deliveries[index].deldeProPrice.toString()),
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildButtomMap() {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+        RaisedButton(
+            child: Text('Map'),
+            onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Location()),
+                ))
+      ]),
     );
   }
 }
